@@ -9,7 +9,7 @@ import { getAllOrdersbyId } from '../../api/orders';
 import { useParams } from 'react-router-dom';
 import { postNewOrder, updateOrder } from '../../api/orders';
 import { postNewProducts, deleteProducts } from '../../api/products';
-
+import swal from 'sweetalert';
 
 const AddOrders =  ({ orderId, order }) => {
   const [producttoadd, setOrderProducttoadd] = useState({});
@@ -70,16 +70,16 @@ const AddOrders =  ({ orderId, order }) => {
             console.log('DATOS PARA UPLOAD: ', datos);
 
             const subir = await postNewProducts(datos);
-            console.log('Products Uploaded:', subir);
+            swal("Order Made!", "", "sucess");
           
           } catch (error) {
             console.error('Error placing order or uploading products:', error);
           }
         } else {
-          console.log("Nothing to order. ");
+          swal("Nothing to order!", "", "error");
         }
       } else {
-        console.log("Remaking order. "); 
+        swal("Remaking order ...", "", "warning");
         try {
           // Update the existing order
           await updateOrder(orderData);

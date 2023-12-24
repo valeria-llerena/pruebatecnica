@@ -21,7 +21,7 @@ const UpdateModal = ({ isOpen, onClose, rowData , onUpdate}) => {
       fkOrder: rowData.fkOrder, 
       totalprice: newQty * rowData.unitprice 
     };
-
+    
     onUpdate(updatedRow); // Call the onUpdate callback with the updated data
     onClose();
   };

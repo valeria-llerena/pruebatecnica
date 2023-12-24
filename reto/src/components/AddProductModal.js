@@ -1,4 +1,5 @@
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, List, ListItem, ListItemText, TextField, MenuItem, Box } from '@mui/material';
+import swal from 'sweetalert';
 
 import React, { useState } from 'react';
 
@@ -26,6 +27,7 @@ const AddProductModal = ({ products, open, onClose, onAddToOrder }) => {
         unitprice: selectedProduct.unitprice, 
         
       });
+      swal("Product Added!", "You a new product!", "success");
       onClose();
     }
   };

@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, List, ListItem, ListItemText, TextField, MenuItem, Box } from '@mui/material';
 
 
@@ -6,6 +7,7 @@ const DeleteModal = ({ isOpen, onClose, rowData, onDelete }) => {
   // Add logic to delete the row
   const handleDeleteClick = () => {
     onDelete(rowData); // Call the passed onDelete function with the selected row data
+    swal("Product deleted!", "", "warning");
     onClose();
   };
 

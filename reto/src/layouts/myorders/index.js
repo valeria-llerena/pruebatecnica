@@ -15,7 +15,7 @@ import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {getAllOrders,  postNewOrder, deleteOrder} from '../../api/orders';
 import { deleteProducts } from '../../api/products';
-
+import swal from 'sweetalert';
 const columns = [
   { id: 'idorder', label: 'ID', minWidth: 170 },
   { id: 'nmborder', label: 'ORDER #', minWidth: 100 },
@@ -86,12 +86,12 @@ export default function MyOrders() {
   
   const handleDelete = (order) => {
     setSelectedOrder(order);
-    console.log('Selected order: ', selectedOrder)
+    
     setIsModalOpen(true);
   };
 
     const confirmDelete = async (id) => {
-      console.log("Attempting to delete order with ID:", id);
+      swal("Order Deleted!", "selectedOrder", "error");
       try {
         await deleteProducts(id); 
         await deleteOrder(id);
